@@ -1,26 +1,192 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-comfortaa);
+  --font-mono: var(--font-comfortaa);
+  --font-heading: var(--font-comfortaa);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Igbo heritage palette */
+  --color-camwood: var(--camwood);
+  --color-ochre: var(--ochre);
+  --color-forest: var(--forest);
+  --color-indigo: var(--indigo);
+  --color-uli: var(--uli);
+  --color-nzu: var(--nzu);
+  --color-gold: var(--gold);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/*
+  Palette drawn from the Igbo world:
+  nzu (white kaolin chalk), uli (indigo-black body-art dye),
+  ufie/camwood (red), palm-oil ochre, bronze gold (Igbo-Ukwu), forest green.
+*/
+:root {
+  --nzu: oklch(0.975 0.008 180);
+  --uli: oklch(0.21 0.03 220);
+  --camwood: oklch(0.46 0.09 195);
+  --ochre: oklch(0.63 0.14 40);
+  --gold: oklch(0.8 0.12 55);
+  --forest: oklch(0.5 0.1 155);
+  --indigo: oklch(0.45 0.1 275);
+
+  --background: var(--nzu);
+  --foreground: var(--uli);
+  --card: oklch(0.99 0.005 180);
+  --card-foreground: var(--uli);
+  --popover: oklch(0.99 0.005 180);
+  --popover-foreground: var(--uli);
+  --primary: var(--camwood);
+  --primary-foreground: oklch(0.985 0.005 180);
+  --secondary: oklch(0.92 0.03 190);
+  --secondary-foreground: var(--uli);
+  --muted: oklch(0.94 0.015 190);
+  --muted-foreground: oklch(0.45 0.03 215);
+  --accent: oklch(0.92 0.04 50);
+  --accent-foreground: var(--uli);
+  --destructive: oklch(0.55 0.22 27);
+  --border: oklch(0.87 0.02 200);
+  --input: oklch(0.87 0.02 200);
+  --ring: var(--camwood);
+  --radius: 0.75rem;
+}
+
+.dark {
+  --camwood: oklch(0.74 0.1 190);
+  --ochre: oklch(0.76 0.13 45);
+  --forest: oklch(0.74 0.1 155);
+  --indigo: oklch(0.75 0.09 275);
+
+  --background: oklch(0.17 0.025 220);
+  --foreground: oklch(0.95 0.01 190);
+  --card: oklch(0.21 0.028 220);
+  --card-foreground: oklch(0.95 0.01 190);
+  --popover: oklch(0.21 0.028 220);
+  --popover-foreground: oklch(0.95 0.01 190);
+  --primary: var(--camwood);
+  --primary-foreground: oklch(0.18 0.03 220);
+  --secondary: oklch(0.27 0.03 215);
+  --secondary-foreground: oklch(0.95 0.01 190);
+  --muted: oklch(0.25 0.028 220);
+  --muted-foreground: oklch(0.78 0.02 200);
+  --accent: oklch(0.3 0.04 45);
+  --accent-foreground: oklch(0.95 0.01 190);
+  --destructive: oklch(0.7 0.19 22);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: var(--camwood);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-heading;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--gold);
+    color: var(--uli);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ---------- Signature effects ---------- */
+
+/* Uli line drawing: strokes draw themselves in */
+.uli-draw path,
+.uli-draw circle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .uli-draw path,
+  .uli-draw circle {
+    stroke-dashoffset: 1;
+    animation: uli-draw 2.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+  .uli-draw > :nth-child(2n) { animation-delay: 0.25s; }
+  .uli-draw > :nth-child(3n) { animation-delay: 0.5s; }
+}
+@keyframes uli-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* The four-beat rhythm of the Igbo week: Eke, Orie, Afọ, Nkwọ */
+@media (prefers-reduced-motion: no-preference) {
+  .beat {
+    animation: beat 2.4s ease-in-out infinite;
+    transform-origin: bottom;
+  }
+  .beat:nth-child(2) { animation-delay: 0.6s; }
+  .beat:nth-child(3) { animation-delay: 1.2s; }
+  .beat:nth-child(4) { animation-delay: 1.8s; }
+  .ember {
+    animation: ember 3s ease-out 1 both;
+  }
+  .spin-slow {
+    animation: spin 90s linear infinite;
+  }
+}
+@keyframes beat {
+  0%, 70%, 100% { transform: scaleY(0.35); opacity: 0.5; }
+  15% { transform: scaleY(1); opacity: 1; }
+}
+@keyframes ember {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Repeating uli motif as a subtle texture */
+.uli-texture {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' fill='none' stroke='%23f0a87a' stroke-width='1.2' stroke-linecap='round'%3E%3Cpath d='M0 32c10-12 22-12 32 0s22 12 32 0'/%3E%3Ccircle cx='32' cy='32' r='3'/%3E%3Cpath d='M32 0v10M32 54v10'/%3E%3C/svg%3E");
+  background-size: 64px 64px;
+}
+
+.grain {
+  background-image: radial-gradient(oklch(1 0 0 / 5%) 1px, transparent 1px);
+  background-size: 3px 3px;
 }
