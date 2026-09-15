@@ -17,10 +17,10 @@ function isActive(pathname: string, href: string) {
 export function Logo({ className }: { className?: string }) {
   return (
     <Link href="/" className={cn("group flex min-h-11 items-center gap-2.5", className)}>
-      <Image src="/hero-img-2.webp" alt="" width={36} height={36} className="size-9 rounded-full object-cover" priority />
+      <Image src="/hero-img-2.webp" alt="" width={40} height={40} className="size-10 rounded-full object-cover ring-1 ring-gold/50 ring-offset-2 ring-offset-background" priority />
       <span className="flex flex-col leading-none">
-        <span className="font-heading text-lg font-semibold tracking-tight">Nomeh</span>
-        <span className="text-[0.65rem] uppercase tracking-[0.28em] text-muted-foreground">Unateze</span>
+        <span className="font-heading text-2xl font-semibold tracking-tight">Nomeh</span>
+        <span className="mt-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.35em] text-muted-foreground">Unateze</span>
       </span>
     </Link>
   )
@@ -30,8 +30,8 @@ export function SiteHeader() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md supports-backdrop-filter:bg-background/70">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
+    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl backdrop-saturate-150 supports-backdrop-filter:bg-background/65">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
         <Logo />
         <nav aria-label="Primary" className="hidden lg:block">
           <ul className="flex items-center gap-1">
@@ -43,13 +43,13 @@ export function SiteHeader() {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "relative inline-flex min-h-11 items-center rounded-full px-3.5 text-sm font-medium transition-colors hover:text-primary",
+                      "relative inline-flex min-h-11 items-center rounded-full px-3.5 text-[0.8rem] font-medium tracking-wide transition-colors hover:text-primary",
                       active ? "text-primary" : "text-foreground/80"
                     )}
                   >
                     {item.label}
                     {active && (
-                      <span aria-hidden className="absolute inset-x-3.5 bottom-2 h-px bg-primary" />
+                      <span aria-hidden className="absolute bottom-1.5 left-1/2 size-1 -translate-x-1/2 rounded-full bg-gold" />
                     )}
                   </Link>
                 </li>

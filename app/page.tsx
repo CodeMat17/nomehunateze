@@ -15,76 +15,82 @@ export default function Home() {
     <>
       {/* ---------- Hero ---------- */}
       <section className="relative isolate overflow-hidden bg-uli text-nzu">
-        <div className="uli-texture absolute inset-0 opacity-[0.05]" aria-hidden />
+        <div className="uli-texture absolute inset-0 opacity-[0.035]" aria-hidden />
         <div
-          className="ember absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_70%_40%,oklch(0.46_0.09_195/45%),transparent_70%)]"
+          className="ember absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_78%_35%,oklch(0.46_0.09_195/40%),transparent_70%),radial-gradient(ellipse_50%_40%_at_10%_100%,oklch(0.8_0.12_55/12%),transparent_70%)]"
           aria-hidden
         />
-        <Container className="relative grid min-h-[calc(100svh-4rem)] items-center gap-12 py-16 lg:grid-cols-2">
-          <div>
-          <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.35em] text-gold">
-            <span aria-hidden className="h-px w-10 bg-current" />
+        <div className="noise pointer-events-none absolute inset-0 opacity-[0.18]" aria-hidden />
+        <div className="hairline absolute inset-x-0 top-0 h-px" aria-hidden />
+
+        {/* Grid: row 1 = eyebrow (left only); row 2 = headline block (left) + image (right), top-aligned */}
+        <Container className="relative grid min-h-[calc(100svh-4.5rem)] content-center gap-x-16 gap-y-8 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-24">
+          <p className="flex items-center gap-4 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-gold lg:col-start-1 lg:row-start-1">
+            <span aria-hidden className="h-px w-12 bg-linear-to-r from-transparent to-gold" />
             Nkanu East · Enugu State
           </p>
-          <h1 className="mt-6 max-w-4xl text-[clamp(2.8rem,10vw,7rem)] leading-[0.9]  font-black tracking-tight">
-            Nomeh
-            <span className="block text-gold">Unateze</span>
-          </h1>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-nzu/85 sm:text-xl">
-            One people. <strong className="font-semibold text-nzu">Four ancestral villages.</strong>{" "}
-            {TOTAL_SUB_VILLAGES} sub-villages. The living story of an ancient Igbo community — from the journey out of
-            Ogugu-Eze to the banks of the Nvuna River.
-          </p>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/villages"
-              className={cn(
-                buttonVariants(),
-                "h-12 rounded-full bg-gold px-7 text-base text-uli hover:bg-nzu"
-              )}
-            >
-              Explore the Four Villages <ArrowRight className="size-4" aria-hidden />
-            </Link>
-            <Link
-              href="/our-story"
-              className={cn(
-                buttonVariants({ variant: "outline" }),
-                "h-12 rounded-full border-nzu/30 bg-transparent px-7 text-base text-nzu hover:bg-nzu/10 hover:text-nzu dark:bg-transparent"
-              )}
-            >
-              Read Our Story
-            </Link>
+          <div className="lg:col-start-1 lg:row-start-2">
+            <h1 className="text-[clamp(2.8rem,9vw,6.75rem)] leading-[0.95] font-bold tracking-[-0.04em]">
+              Nomeh
+              <span className="text-bronze block pb-2">Unateze</span>
+            </h1>
+            <p className="mt-8 max-w-xl text-lg leading-relaxed font-light text-nzu/80 sm:text-xl">
+              One people. <strong className="font-semibold text-nzu">Four ancestral villages.</strong>{" "}
+              {TOTAL_SUB_VILLAGES} sub-villages. The living story of an ancient Igbo community — from the journey out of
+              Ogugu-Eze to the banks of the Nvuna River.
+            </p>
+
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/villages"
+                className={cn(
+                  buttonVariants(),
+                  "group relative h-13 overflow-hidden rounded-full bg-linear-to-r from-[oklch(0.76_0.12_55)] to-[oklch(0.88_0.09_72)] px-8 text-sm font-semibold tracking-wide text-uli shadow-[0_10px_40px_-10px_oklch(0.8_0.12_55/60%)] transition-all hover:-translate-y-0.5 hover:shadow-[0_18px_50px_-12px_oklch(0.8_0.12_55/75%)]"
+                )}
+              >
+                Explore the Four Villages
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden />
+              </Link>
+              <Link
+                href="/our-story"
+                className={cn(
+                  buttonVariants({ variant: "outline" }),
+                  "h-13 rounded-full border-nzu/25 bg-nzu/[0.03] px-8 text-sm font-semibold tracking-wide text-nzu backdrop-blur-sm hover:border-gold/60 hover:bg-nzu/[0.07] hover:text-nzu dark:bg-nzu/[0.03]"
+                )}
+              >
+                Read Our Story
+              </Link>
+            </div>
+
+            <dl className="relative mt-16 grid max-w-xl grid-cols-3 gap-6 pt-8">
+              <span aria-hidden className="hairline absolute inset-x-0 top-0 h-px" />
+              {[
+                ["4", "Ancestral villages"],
+                [String(TOTAL_SUB_VILLAGES), "Sub-villages"],
+                ["1", "People"],
+              ].map(([n, label]) => (
+                <div key={label} className="flex flex-col-reverse">
+                  <dt className="mt-2 text-[0.65rem] font-medium uppercase tracking-[0.25em] text-nzu/60">{label}</dt>
+                  <dd className="text-bronze font-heading text-5xl leading-none sm:text-6xl">{n}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-
-          <dl className="mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-nzu/15 pt-8">
-            {[
-              ["4", "Ancestral villages"],
-              [String(TOTAL_SUB_VILLAGES), "Sub-villages"],
-              ["1", "People"],
-            ].map(([n, label]) => (
-              <div key={label}>
-                <dt className="text-xs uppercase tracking-[0.2em] text-nzu/70">{label}</dt>
-                <dd className="mt-1 font-heading text-4xl text-gold sm:text-5xl">{n}</dd>
-              </div>
-            ))}
-          </dl>
-          </div>
-
-          <div className="flex justify-center lg:justify-end">
+          <div className="mx-auto mt-6 w-full max-w-sm sm:max-w-md lg:col-start-2 lg:row-start-2 lg:mt-0 lg:max-w-none lg:self-start">
             <Image
               src="/hero-img-2.webp"
               alt="Nomeh Unateze"
               width={500}
               height={500}
               priority
-              sizes="(min-width: 1024px) 420px, 80vw"
-              className="h-auto w-full max-w-sm rounded-3xl shadow-2xl lg:max-w-md"
+              sizes="(min-width: 1024px) 520px, 80vw"
+              className="h-auto w-full rounded-3xl"
             />
           </div>
         </Container>
-        <UliBand className="relative h-5 w-full text-gold/50" />
+        <UliBand className="relative h-5 w-full text-gold/40" />
       </section>
 
       {/* ---------- The Four Villages ---------- */}
@@ -93,7 +99,7 @@ export default function Home() {
           <div>
             <Reveal>
               <Eyebrow>The Structure of Nomeh</Eyebrow>
-              <h2 id="villages-title" className="mt-4 text-4xl leading-[1.05] font-semibold tracking-tight sm:text-5xl">
+              <h2 id="villages-title" className="mt-5 text-4xl leading-[1.08] font-bold tracking-[-0.03em] sm:text-5xl">
                 Founded upon <em className="text-primary">four</em> ancestral villages
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
@@ -107,7 +113,7 @@ export default function Home() {
                 <StaggerItem key={v.slug}>
                   <Link
                     href={`/villages/${v.slug}`}
-                    className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border bg-card p-4 transition-all hover:-translate-y-0.5 hover:shadow-lg sm:p-5"
+                    className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border bg-card p-4 transition-all card-luxe sm:p-5"
                   >
                     <span aria-hidden className="absolute inset-y-0 left-0 w-1.5" style={{ background: v.tone }} />
                     <span
@@ -143,7 +149,7 @@ export default function Home() {
         <Container className="grid gap-14 lg:grid-cols-[1fr_1.2fr]">
           <Reveal className="relative">
             <Eyebrow>From Ogugu-Eze</Eyebrow>
-            <h2 id="journey-title" className="mt-4 text-4xl leading-[1.05] font-semibold tracking-tight sm:text-5xl">
+            <h2 id="journey-title" className="mt-5 text-4xl leading-[1.08] font-bold tracking-[-0.03em] sm:text-5xl">
               A journey of ancestry, settlement and identity
             </h2>
             <Ikenga className="mt-10 hidden h-64 text-primary/70 lg:block" />
@@ -208,7 +214,7 @@ export default function Home() {
               <span aria-hidden className="h-px w-8 bg-current" />
               Land &amp; Natural Heritage
             </p>
-            <h2 id="land-title" className="mt-4 text-4xl leading-[1.05] font-semibold tracking-tight sm:text-5xl">
+            <h2 id="land-title" className="mt-5 text-4xl leading-[1.08] font-bold tracking-[-0.03em] sm:text-5xl">
               The Nvuna River and a level, fruitful land
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-nzu/80">
@@ -252,7 +258,7 @@ export default function Home() {
             {marketDays.map((d, i) => (
               <StaggerItem
                 key={d.name}
-                className="group relative overflow-hidden rounded-3xl border bg-card p-6 text-center"
+                className="card-luxe group relative overflow-hidden rounded-3xl border bg-card p-6 text-center"
               >
                 <div className="mx-auto flex h-16 items-end justify-center gap-1.5" aria-hidden>
                   {[0, 1, 2, 3].map((b) => (
@@ -290,7 +296,7 @@ export default function Home() {
               <StaggerItem
                 key={name}
                 className={cn(
-                  "group flex flex-col items-center rounded-3xl border bg-card p-6 text-center transition-shadow hover:shadow-xl",
+                  "group flex flex-col items-center rounded-3xl border bg-card p-6 text-center card-luxe",
                   i === 4 && "col-span-2 lg:col-span-1"
                 )}
               >
@@ -311,7 +317,7 @@ export default function Home() {
       {/* ---------- Blog ---------- */}
       <section aria-labelledby="blog-cta" className="py-20 sm:py-28">
         <Container>
-          <Reveal className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-16 text-primary-foreground sm:px-14">
+          <Reveal className="relative overflow-hidden rounded-[2.5rem] bg-primary px-6 py-20 shadow-luxe text-primary-foreground sm:px-14">
             <div className="uli-texture absolute inset-0 opacity-[0.12]" aria-hidden />
             <div className="relative max-w-2xl">
               <h2 id="blog-cta" className="text-4xl leading-tight font-semibold sm:text-5xl">

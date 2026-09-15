@@ -6,15 +6,18 @@ export function SiteFooter() {
   return (
     <footer className="relative mt-auto overflow-hidden bg-uli text-nzu">
       <UliBand className="h-4 w-full text-gold/60" />
-      <div className="uli-texture absolute inset-0 opacity-[0.04]" aria-hidden />
-      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
+      <div className="uli-texture absolute inset-0 opacity-[0.03]" aria-hidden />
+      <div className="noise pointer-events-none absolute inset-0 opacity-[0.15]" aria-hidden />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 md:grid-cols-4">
         <div className="md:col-span-2">
-          <p className="font-heading text-3xl">Nomeh Unateze</p>
+          <p className="font-heading text-4xl leading-none font-bold tracking-[-0.03em]">
+            Nomeh <span className="text-bronze">Unateze</span>
+          </p>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-nzu/75">
             An ancient Igbo community in Nkanu East LGA, Enugu State, Nigeria — founded upon four
             ancestral villages and 37 recognized sub-villages. Bordered by {neighbours.join(", ")}.
           </p>
-          <p className="mt-6 font-heading text-lg text-gold">“Igwe bụ ike” — unity is strength.</p>
+          <p className="mt-8 font-heading text-xl text-gold">“Igwe bụ ike” — unity is strength.</p>
         </div>
         <nav aria-label="The four villages">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">The Four Villages</p>

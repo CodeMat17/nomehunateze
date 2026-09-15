@@ -63,7 +63,7 @@ export function ScrollProgress() {
     <m.div
       aria-hidden
       style={{ scaleX }}
-      className="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left bg-gradient-to-r from-camwood via-gold to-forest"
+      className="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left bg-linear-to-r from-camwood via-gold to-forest"
     />
   )
 }

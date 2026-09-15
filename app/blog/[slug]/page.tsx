@@ -51,7 +51,7 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
           </Link>
           <Reveal className="mt-8">
             <Eyebrow>{post.tag}</Eyebrow>
-            <h1 className="mt-4 text-4xl leading-[1.05] font-semibold tracking-tight sm:text-5xl">{post.title}</h1>
+            <h1 className="mt-5 text-4xl leading-[1.08] font-bold tracking-[-0.03em] sm:text-5xl">{post.title}</h1>
             <p className="mt-5 text-sm text-muted-foreground">
               {post.author} · <time dateTime={post.date}>{formatDate(post.date)}</time>
             </p>
