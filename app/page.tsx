@@ -161,7 +161,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-linear-to-t from-uli/50 to-transparent to-50%" aria-hidden />
               </div>
               <figcaption className="mt-3 text-xs text-muted-foreground">
-                An Igbo market in the early twentieth century. Photograph: G. T. Basden.
+                Eke market in the early twentieth century.
               </figcaption>
             </figure>
           </Reveal>
