@@ -4,7 +4,6 @@ import { ArrowRight, Droplets, MapPin, Sprout, Users } from "lucide-react"
 import { atAGlance, marketDays, neighbours, TOTAL_SUB_VILLAGES, villages } from "@/lib/site"
 import { photos } from "@/lib/images"
 import { EmergingPhoto } from "@/components/emerging-photo"
-import { FourVillagesCompass } from "@/components/four-villages"
 import { Container, Eyebrow, SectionHeading } from "@/components/section"
 import { Reveal, Stagger, StaggerItem } from "@/components/motion"
 import { buttonVariants } from "@/components/ui/button"
@@ -123,7 +122,21 @@ export default function Home() {
             </Stagger>
           </div>
           <Reveal delay={0.15}>
-            <FourVillagesCompass />
+            <figure>
+              <div className="relative aspect-4/3 overflow-hidden rounded-3xl shadow-luxe lg:aspect-square">
+                <Image
+                  src={photos.villageAerial.src}
+                  alt={photos.villageAerial.alt}
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-uli/50 to-transparent to-50%" aria-hidden />
+              </div>
+              <figcaption className="mt-3 text-xs text-muted-foreground">
+                Homesteads among oil palms in Achi, Enugu State, seen from above. Photograph: Ifeanyichukwu, CC BY 4.0.
+              </figcaption>
+            </figure>
           </Reveal>
         </Container>
       </section>

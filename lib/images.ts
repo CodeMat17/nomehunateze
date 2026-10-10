@@ -45,6 +45,15 @@ export const photos = {
     license: "CC BY 4.0",
     source: commons("Area_drone_view_of_Achi_1.jpg"),
   },
+  villageAerial: {
+    src: "/images/village-aerial.webp",
+    alt: "Aerial view of a village in Enugu State: homesteads among oil palms on either side of a road",
+    width: 1600,
+    height: 1066,
+    credit: "Ifeanyichukwu",
+    license: "CC BY 4.0",
+    source: commons("Area_drone_view_of_Achi_2.jpg"),
+  },
   river: {
     src: "/images/river.webp",
     alt: "A wide river with sandy banks and forest beyond, in Enugu State",
