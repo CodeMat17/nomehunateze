@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next"
 import { SITE_URL, villages } from "@/lib/site"
-import { posts } from "@/lib/posts"
+import { getPublishedPosts } from "@/lib/posts"
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = ["", "/villages", "/our-story", "/our-land", "/our-culture", "/blog"]
+  const posts = await getPublishedPosts()
   return [
     ...pages.map((p) => ({
       url: `${SITE_URL}${p}`,
@@ -17,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...posts.map((p) => ({
       url: `${SITE_URL}/blog/${p.slug}`,
-      lastModified: p.date,
+      lastModified: p.updated_at,
       changeFrequency: "yearly" as const,
       priority: 0.6,
     })),

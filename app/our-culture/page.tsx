@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { Ikenga, Mask, Ogene, Okwa, Udu } from "@/components/art"
+import Image from "next/image"
+import { photos } from "@/lib/images"
 import { Container, PageHero, SectionHeading } from "@/components/section"
 import { Reveal, Stagger, StaggerItem } from "@/components/motion"
 import { Badge } from "@/components/ui/badge"
@@ -13,27 +14,27 @@ export const metadata: Metadata = {
 
 const artifacts = [
   {
-    Art: Okwa,
+    photo: photos.kola,
     name: "Okwa Oji — the kola bowl",
     text: "“Onye wetara oji wetara ndụ” — he who brings kola brings life. Every gathering in Igboland opens with the breaking and sharing of kola, offered first to the ancestors.",
   },
   {
-    Art: Ogene,
+    photo: photos.ogene,
     name: "Ogene — the iron bell",
     text: "The voice of the town crier and the backbone of Igbo music. Its two iron mouths speak high and low, keeping the rhythm that dancers and masquerades follow.",
   },
   {
-    Art: Udu,
+    photo: photos.udu,
     name: "Udu — pot of water and song",
     text: "Shaped from clay, the udu stores water and doubles as a drum: a hand over its side-hole releases a deep, liquid tone.",
   },
   {
-    Art: Ikenga,
+    photo: photos.ikenga,
     name: "Ikenga — the strength of the right hand",
     text: "A horned figure honouring personal achievement, industry and the power to shape one’s own destiny.",
   },
   {
-    Art: Mask,
+    photo: photos.mmanwu,
     name: "Mmanwu — the masquerade",
     text: "Ancestral spirits made visible, appearing at festivals and rites to bless, judge and entertain the living.",
   },
@@ -57,23 +58,32 @@ export default function OurCulturePage() {
           </>
         }
         lead="Kola and ogene, clay and iron, mask and song — the Igbo heritage carried by the four villages of Nomeh from generation to generation."
-        art={<Ogene className="h-44" />}
+        photo={photos.mmanwu}
+        position="50% 25%"
       />
 
       <section className="py-20 sm:py-24">
         <Container>
           <SectionHeading eyebrow="Ancestral Artifacts" title="Objects that hold memory" />
           <div className="mt-14 space-y-6">
-            {artifacts.map(({ Art, name, text }, i) => (
+            {artifacts.map(({ photo, name, text }, i) => (
               <Reveal key={name}>
                 <article
-                  className={`grid items-center gap-8 rounded-3xl border bg-card p-6 sm:p-10 md:grid-cols-[14rem_1fr] ${i % 2 ? "md:grid-cols-[1fr_14rem]" : ""}`}
+                  className={`grid items-center gap-6 overflow-hidden rounded-3xl border bg-card p-3 sm:gap-10 sm:p-4 ${i % 2 ? "md:grid-cols-[1fr_18rem]" : "md:grid-cols-[18rem_1fr]"}`}
                 >
-                  <div className={`grid place-items-center rounded-2xl bg-secondary/70 p-8 ${i % 2 ? "md:order-2" : ""}`}>
-                    <Art className="h-32 w-auto text-primary" />
+                  <div
+                    className={`relative aspect-[4/3] overflow-hidden rounded-2xl bg-uli md:aspect-[4/5] ${i % 2 ? "md:order-2" : ""}`}
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(min-width: 768px) 18rem, 100vw"
+                      className="object-cover transition-transform duration-1000 ease-out hover:scale-105"
+                    />
                   </div>
-                  <div>
-                    <h2 className="text-3xl font-semibold">{name}</h2>
+                  <div className="px-3 pb-5 sm:px-4 md:py-6">
+                    <h2 className="text-3xl font-medium tracking-[-0.02em] sm:text-4xl">{name}</h2>
                     <p className="mt-3 max-w-2xl text-lg leading-relaxed text-muted-foreground">{text}</p>
                   </div>
                 </article>

@@ -5,7 +5,7 @@ import { TOTAL_SUB_VILLAGES, villages } from "@/lib/site"
 import { Container, PageHero, SectionHeading } from "@/components/section"
 import { FourVillagesCompass } from "@/components/four-villages"
 import { Reveal, Stagger, StaggerItem } from "@/components/motion"
-import { Mask } from "@/components/art"
+import { photos } from "@/lib/images"
 
 export const metadata: Metadata = {
   title: "The Four Ancestral Villages of Nomeh",
@@ -24,7 +24,7 @@ export default function VillagesPage() {
           </>
         }
         lead={`The traditional structure of Nomeh Unateze is founded upon four ancestral villages. Each has its own sub-villages and its own village square — together, ${TOTAL_SUB_VILLAGES} sub-villages and one people.`}
-        art={<Mask className="h-56" />}
+        photo={photos.landAerial}
       />
 
       <section className="py-20 sm:py-24">

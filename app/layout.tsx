@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Comfortaa } from "next/font/google"
+import { Fraunces, Manrope } from "next/font/google"
 import "./globals.css"
 import { Providers } from "@/components/theme-provider"
 import { SiteHeader } from "@/components/site-header"
@@ -7,8 +7,18 @@ import { SiteFooter } from "@/components/site-footer"
 import { ScrollProgress } from "@/components/motion"
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, villages, neighbours, TOTAL_SUB_VILLAGES } from "@/lib/site"
 
-const comfortaa = Comfortaa({
-  variable: "--font-comfortaa",
+// Fraunces: a soft, high-contrast display serif for headings (variable, with optical sizing).
+// Manrope: a clean geometric sans for body copy and UI.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["SOFT", "opsz"],
+  display: "swap",
+})
+
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
 })
@@ -101,7 +111,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${comfortaa.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning className={`${fraunces.variable} ${manrope.variable} antialiased`}>
       <body className="flex min-h-dvh flex-col">
         <a
           href="#main"

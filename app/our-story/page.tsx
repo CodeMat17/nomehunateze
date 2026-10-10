@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react"
 import { TOTAL_SUB_VILLAGES } from "@/lib/site"
 import { Container, Eyebrow, PageHero } from "@/components/section"
 import { Reveal } from "@/components/motion"
-import { Ikenga } from "@/components/art"
+import { photos } from "@/lib/images"
 import { Badge } from "@/components/ui/badge"
 
 export const metadata: Metadata = {
@@ -58,7 +58,7 @@ export default function OurStoryPage() {
           </>
         }
         lead="The ancestral journey of Nomeh Unateze — a story of migration and settlement, and of how a people transformed a new homeland into a community with its own identity, institutions and traditions."
-        art={<Ikenga className="h-64" />}
+        photo={photos.redCapChiefs}
       />
 
       <section className="py-20 sm:py-24">

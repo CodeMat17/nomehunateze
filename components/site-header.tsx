@@ -17,7 +17,7 @@ function isActive(pathname: string, href: string) {
 export function Logo({ className }: { className?: string }) {
   return (
     <Link href="/" className={cn("group flex min-h-11 items-center gap-2.5", className)}>
-      <Image src="/hero-img-2.webp" alt="" width={40} height={40} className="size-10 rounded-full object-cover ring-1 ring-gold/50 ring-offset-2 ring-offset-background" priority />
+      <Image src="/logo.webp" alt="" width={44} height={44} className="size-11 rounded-full object-contain" priority />
       <span className="flex flex-col leading-none">
         <span className="font-heading text-2xl font-semibold tracking-tight">Nomeh</span>
         <span className="mt-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.35em] text-muted-foreground">Unateze</span>

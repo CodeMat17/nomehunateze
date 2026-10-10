@@ -3,7 +3,7 @@ import { Compass, Droplets, Mountain, Sprout, Trees } from "lucide-react"
 import { neighbours } from "@/lib/site"
 import { Container, PageHero, SectionHeading } from "@/components/section"
 import { Reveal, Stagger, StaggerItem } from "@/components/motion"
-import { Udu } from "@/components/art"
+import { photos } from "@/lib/images"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export const metadata: Metadata = {
@@ -31,7 +31,8 @@ export default function OurLandPage() {
           </>
         }
         lead="A predominantly level landscape, watered by the Nvuna River and its streams — land that has fed, sheltered and shaped the people of Nomeh for generations."
-        art={<Udu className="h-56" />}
+        photo={photos.river}
+        position="50% 40%"
       />
 
       <section className="py-20 sm:py-24">

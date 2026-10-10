@@ -1,18 +1,21 @@
+import Image from "next/image"
 import Link from "next/link"
 import { nav, villages, neighbours } from "@/lib/site"
-import { UliBand } from "@/components/art"
 
 export function SiteFooter() {
   return (
     <footer className="relative mt-auto overflow-hidden bg-uli text-nzu">
-      <UliBand className="h-4 w-full text-gold/60" />
+      <div className="hairline h-px w-full" aria-hidden />
       <div className="uli-texture absolute inset-0 opacity-[0.03]" aria-hidden />
       <div className="noise pointer-events-none absolute inset-0 opacity-[0.15]" aria-hidden />
       <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 md:grid-cols-4">
         <div className="md:col-span-2">
-          <p className="font-heading text-4xl leading-none font-bold tracking-[-0.03em]">
-            Nomeh <span className="text-bronze">Unateze</span>
-          </p>
+          <div className="flex items-center gap-4">
+            <Image src="/logo.webp" alt="" width={72} height={72} className="size-18 rounded-full object-contain" />
+            <p className="font-heading text-4xl leading-none font-medium tracking-[-0.03em]">
+              Nomeh <span className="text-bronze">Unateze</span>
+            </p>
+          </div>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-nzu/75">
             An ancient Igbo community in Nkanu East LGA, Enugu State, Nigeria — founded upon four
             ancestral villages and 37 recognized sub-villages. Bordered by {neighbours.join(", ")}.
@@ -47,7 +50,10 @@ export function SiteFooter() {
       <div className="relative border-t border-nzu/10">
         <p className="mx-auto max-w-7xl px-4 py-6 text-xs text-nzu/70 sm:px-6">
           © {new Date().getFullYear()} Nomeh Unateze Heritage. The digital memory, cultural archive and living story of
-          our people.
+          our people.{" "}
+          <Link href="/credits" className="underline underline-offset-4 hover:text-gold">
+            Photo credits
+          </Link>
         </p>
       </div>
     </footer>

@@ -5,8 +5,8 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 import { SITE_URL, villages } from "@/lib/site"
 import { Container, Eyebrow } from "@/components/section"
 import { Reveal, Stagger, StaggerItem } from "@/components/motion"
-import { UliSun } from "@/components/art"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { photos } from "@/lib/images"
+import { EmergingPhoto } from "@/components/emerging-photo"
 
 export const dynamicParams = false
 
@@ -43,22 +43,19 @@ export default async function VillagePage(props: PageProps<"/villages/[slug]">) 
     containsPlace: v.subVillages.map((name) => ({ "@type": "Place", name })),
   }
 
-  const records = [
-    ["History & founding lineage", "The history and ancestral lineage of this village are being gathered from elders and family records."],
-    ["Traditional leadership", "Village heads, kindred leadership, chiefs and elders will be documented with community custodians."],
-    ["Landmarks, streams & forests", "Sacred sites, streams, forests and farmlands of the village are being mapped."],
-    ["Cultural practices", "Dances, masquerades, ceremonies and age-grade traditions particular to the village."],
-    ["Notable people", "Sons and daughters who have shaped the village and Nomeh across generations."],
-  ]
-
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
-      <section className="relative overflow-hidden bg-uli text-nzu">
-        <div className="absolute inset-0 opacity-40" style={{ background: `radial-gradient(ellipse at 80% 30%, ${v.tone}, transparent 65%)` }} aria-hidden />
-        <UliSun className="absolute -top-20 -right-32 w-[34rem] max-w-none text-gold/25" />
-        <Container className="relative py-16 sm:py-24">
+      <section className="relative isolate overflow-hidden bg-uli text-nzu">
+        <EmergingPhoto photo={photos.landAerial} priority className="h-[46svh] max-h-[26rem] lg:w-[56%]" />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-30 mix-blend-soft-light"
+          style={{ background: `radial-gradient(ellipse at 80% 30%, ${v.tone}, transparent 65%)` }}
+          aria-hidden
+        />
+        <div className="noise pointer-events-none absolute inset-0 opacity-[0.16]" aria-hidden />
+        <Container className="relative pt-8 pb-16 sm:pb-24 lg:py-24">
           <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-2 text-sm text-nzu/75">
               <li><Link href="/" className="hover:text-gold">Home</Link></li>
@@ -68,7 +65,7 @@ export default async function VillagePage(props: PageProps<"/villages/[slug]">) 
               <li aria-current="page" className="text-nzu">{v.shortName}</li>
             </ol>
           </nav>
-          <p className="mt-10 font-heading text-8xl leading-none text-gold/90 sm:text-9xl" aria-hidden>
+          <p className="text-bronze mt-[24svh] font-heading text-8xl leading-none font-medium italic sm:text-9xl lg:mt-10" aria-hidden>
             {v.order}
           </p>
           <p className="mt-4 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
@@ -107,33 +104,6 @@ export default async function VillagePage(props: PageProps<"/villages/[slug]">) 
               </StaggerItem>
             ))}
           </Stagger>
-        </Container>
-      </section>
-
-      <section className="bg-secondary/60 py-20 sm:py-24" aria-labelledby="archive">
-        <Container className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
-          <Reveal>
-            <Eyebrow>Village Archive</Eyebrow>
-            <h2 id="archive" className="mt-4 text-4xl font-semibold tracking-tight">Help us write {v.shortName}&apos;s record</h2>
-            <p className="mt-4 text-muted-foreground">
-              These records are being built with elders and community custodians. Oral traditions are kept distinct
-              from verified records.
-            </p>
-            <a
-              href={`mailto:heritage@nomehunateze.com?subject=${encodeURIComponent(`Contribution: ${v.shortName}`)}`}
-              className="mt-6 inline-flex min-h-11 items-center gap-2 font-medium text-primary hover:underline"
-            >
-              Contribute to this village <ArrowRight className="size-4" aria-hidden />
-            </a>
-          </Reveal>
-          <Accordion className="rounded-3xl border bg-card px-6">
-            {records.map(([title, text]) => (
-              <AccordionItem key={title} value={title}>
-                <AccordionTrigger className="min-h-14 items-center text-base">{title}</AccordionTrigger>
-                <AccordionContent className="text-base text-muted-foreground">{text}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
         </Container>
       </section>
 
